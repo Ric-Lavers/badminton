@@ -33,6 +33,7 @@ async function submitForm(e) {
     if (!localStorage._id) {
       const team = await createTeam(data)
       localStorage.setItem("_id", team._id)
+      localStorage.setItem("team", JSON.stringify(team))
       // hide form / show edit button
     } else {
       const team = await updateTeam({ ...data, _id: localStorage._id })
@@ -43,18 +44,20 @@ async function submitForm(e) {
   } catch (error) {}
 }
 
-function anotherMobile(e) {
-  e.preventDefault()
+function anotherMobile(e, value) {
+  e && e.preventDefault()
   input = document.createElement("input")
   input.setAttribute("name", "number_2")
   input.setAttribute("type", "text")
+  if (value) input.setAttribute("value", value)
   anotherMobileBtn.replaceWith(input)
 }
-function anotherName(e) {
-  e.preventDefault()
+function anotherName(e, value) {
+  e && e.preventDefault()
   input = document.createElement("input")
   input.setAttribute("name", "guest_2")
   input.setAttribute("type", "text")
+  if (value) input.setAttribute("value", value)
   anotherGuestBtn.replaceWith(input)
 }
 
@@ -81,4 +84,23 @@ function setRsvpView() {
   }
 }
 
+function populateTeam() {
+  if (!localStorage.team) return
+  team = JSON.parse(localStorage.team)
+  team.guests.map((guest, i) => {
+    if (i == 0)
+      document.querySelector('[name="guest_1"]').setAttribute("value", guest)
+    else anotherName(null, guest)
+  })
+  team.numbers.map((number, i) => {
+    if (i == 0)
+      document.querySelector('[name="number_1"]').setAttribute("value", number)
+    else anotherMobile(null, number)
+  })
+  document
+    .querySelector('[name="teamName"]')
+    .setAttribute("value", team.teamName)
+}
+
 setRsvpView()
+populateTeam()

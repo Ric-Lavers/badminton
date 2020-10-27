@@ -211,7 +211,6 @@ small {
 
 /* form */
 #rsvp-form {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: space-between;
