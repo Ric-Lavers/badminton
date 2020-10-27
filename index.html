@@ -1,106 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>Document</title>
-  <link href="./style.css" rel="stylesheet">
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Document</title>
+    <link href="./style.css" rel="stylesheet">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+    <script src="./services.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <body>
 
+    <div class="main" class="bg-net">
+      <div id="dear">
 
-
-<body>
-
-  <div class="main" class="bg-net">
-    <div id="dear">
-
-    </div>
-    <h3>PARKHAM PLAYERS AND PIMM'S PRESENTS</h3>
-    <div class="court">
-      <div class="image-symbols">
-        <img class="shuttlecock" src="./svgs/shuttlecock.svg" alt="shuttlecock">
       </div>
-      <div>
-        <div class="container_title">
-          <div class="title">
-            <h2>THE INAUGURAL</h2>
-          </div>
-          <div class="title">
-            <h1>SURRY OPEN</h1>
+      <h3>PARKHAM PLAYERS AND PIMM'S PRESENTS</h3>
+      <div class="court">
+        <div class="image-symbols">
+          <img class="shuttlecock" src="./svgs/shuttlecock.svg" alt="shuttlecock">
+        </div>
+        <div>
+          <div class="container_title">
+            <div class="title">
+              <h2>THE INAUGURAL</h2>
+            </div>
+            <div class="title">
+              <h1>SURRY OPEN</h1>
+            </div>
           </div>
         </div>
+
+        <div class="description">
+          <p><i>
+              join us for a badmitton tournament with a
+              japanese habatichi grill<br />
+              Bring a bottle of pimms, beef tongue
+              & sunblock
+            </i></p>
+          <p class="address">
+            30 <span class="green">Parkham st 2010</span> <br />
+            (opposite Bourke st Bakery)<br />
+            <span class="green">Saturday 14th </span> of November 2020<br />
+            afternoon from 1ish<br />
+          </p>
+        </div>
+
+
+
       </div>
-
-      <div class="description">
-        <p><i>
-            join us for a badmitton tournament with a
-            japanese habatichi grill<br />
-            Bring a bottle of pimms, beef tongue
-            & sunblock
-          </i></p>
-        <p class="address">
-          30 <span class="green">Parkham st 2010</span> <br />
-          (opposite Bourke st Bakery)<br />
-          <span class="green">Saturday 14th </span> of November 2020<br />
-          afternoon from 1ish<br />
-        </p>
-      </div>
-
-
+      <span style="font-size:6px;color:white">
+        https://www.canva.com/design/DAELeJPX6I4/share/preview?token=MMBuKYU2o0vJdCFfku44-g&role=EDITOR&utm_content=DAELeJPX6I4&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton
+      </span>
 
     </div>
-    <span style="font-size:6px;color:white">
-      https://www.canva.com/design/DAELeJPX6I4/share/preview?token=MMBuKYU2o0vJdCFfku44-g&role=EDITOR&utm_content=DAELeJPX6I4&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton
-    </span>
 
-  </div>
+    <a
+      href="https://www.canva.com/design/DAELeJPX6I4/C3anq4pLJpiXrm6ZCYiu-A/view?utm_content=DAELeJPX6I4&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink">
 
-  <a
-    href="https://www.canva.com/design/DAELeJPX6I4/C3anq4pLJpiXrm6ZCYiu-A/view?utm_content=DAELeJPX6I4&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink">
+      <img class="poster" src="./images/Surry-Open-Posters.png" alt="Poster"></a>
 
-    <img class="poster" src="./images/Surry-Open-Posters.png" alt="Poster"></a>
-
-  <br />
-  <!-- 
+    <br />
+    <!-- 
   <small>*Parkham Players is <b>not</b> associated with YAKIKO Habatichi Grill, Badminton Australia,
     Pimm's or
     almost anything really.</small>
  
 
   -->
-  <!-- 
-  <section>
-    <div id="rsvp">
-      <form id="rsvp-form">
-        <p>Register your team of <b>two</b> now</p>
-        <label>
-          team name 
-           <input name="teamName" type="text">
-         </label>
-         <br/>
-        <label>
-          name(s) 
-           <input name="guests" type="text">
-         </label>
-        <br/>
-        <label>
-         mobile number 
-          <input name="number" type="text">
-        </label>
-        <br/>
-        
 
-        <input type="submit" value="join us">
-      </form>
-    </div>
-  </section>
- -->
-<!-- 
+    <section>
+      <div id="rsvp">
+        <div hidden id="edit-rsvp">
+          <p>
+            Your registered and are now safe from covid.<br />
+            Do you want to change your team details?
+            <button id="show-rsvp">yeah</button>
+          </p>
+        </div>
+        <div id="rsvp-form-container">
+          <form id="rsvp-form">
+            <p>RSVP by registering your team of <b>two</b> now<br />
+              <span style="font-size: smaller;">no team yet? just leave the team name blank</span>
+            </p>
+            <p></p>
+            <label>
+              team name
+              <input name="teamName" type="text">
+            </label>
+            <br />
+            <label>
+              name(s)
+              <input name="guest_1" type="text">
+            </label>
+            <label>
+              <span></span>
+              <button id="add-guest">add your team mates?</button>
+            </label>
+            <br />
+            <label>
+              mobile number
+              <input name="number_1" type="text">
+            </label>
+
+            <label>
+              <span></span>
+              <button id="add-mobile">add your team mates?</button>
+            </label>
+
+            <br />
+
+            <input type="submit" value="join us">
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!--
   <section hidden class="bracket-section">
     <div class="bracket">
       <div class="col">
@@ -130,24 +147,24 @@
 
   </section>
    -->
-  <script src="./dear.js"></script>
-  <!--   <script src="https://unpkg.com/xstate@4/dist/xstate.js"></script>
+    <script src="./dear.js"></script>
+    <!--   <script src="https://unpkg.com/xstate@4/dist/xstate.js"></script>
   <script src="https://unpkg.com/@xstate/inspect"></script> -->
-  <!-- <script src="./create-bracket.js"></script> -->
-  <script src="./rsvp.js"></script>
+    <!-- <script src="./create-bracket.js"></script> -->
+    <script src="./rsvp.js"></script>
 
-  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first
   <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
  -->
-  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics 
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics 
   <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
   -->
-  <!-- Add Firebase products that you want to use
+    <!-- Add Firebase products that you want to use
   <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
  -->
 
- <!--  <script>
+    <!--  <script>
     // Your web app's Firebase configuration
     var firebaseConfig = {
       apiKey: "AIzaSyCH9CaH5qDc_nhOYuYhORZTFAxxH2XkrvE",
@@ -162,7 +179,7 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
   </script> -->
-  </head>
-</body>
+    </head>
+  </body>
 
 </html>
