@@ -39,9 +39,11 @@ async function submitForm(e) {
       const team = await updateTeam({ ...data, _id: localStorage._id })
     }
     const teams = await getAllTeams()
-
+    hideRSVP()
     // populate bracket
-  } catch (error) {}
+  } catch (error) {
+    alert("yeh nah something went wrong")
+  }
 }
 
 function anotherMobile(e, value) {
