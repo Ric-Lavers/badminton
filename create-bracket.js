@@ -27,14 +27,21 @@ function populateBracket(teams = input) {
     arr[j].push(teams[i])
   }
 
-  arr[0].length = 8
-  html = ""
-  for (i = 0; i < 8; i++) {
-    html = html + `<div class="team"><span>${arr[0][i] || ""}</span></div>`
-  }
-  html = bracket(html)
+  arr.forEach(array => {
+    array.length = 8
+    html = ""
+    for (i = 0; i < 8; i++) {
+      html = html + `<div class="team"><span>${array[i]}</span></div>`
+    }
+    html = bracket(html)
 
-  document.querySelector("section.bracket-section").innerHTML = html
+    document.querySelector('.bracket').style.display = 'grid'
+    document.querySelectorAll('.col-1 span').forEach((el, i) => {
+      el.innerText = array[i] || ''
+    })
+
+  })
+
   items = Array.from(document.querySelectorAll(".team"))
   maxHeight = items.reduce((a, c) => {
     h = c.getBoundingClientRect().height

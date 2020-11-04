@@ -51,9 +51,8 @@ section {
   border-top: 3px solid;
 }
 
-.court>div:last-child,
-.court>div:first-child {
 
+.court>div:first-child {
   height: 30vh;
   max-height: 500px;
 }
@@ -67,9 +66,11 @@ section {
 }
 
 .description {
+  font-size: 0.9em;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-height: 30vh;max-height: 500px;
 }
 
 .image-symbols {
@@ -97,7 +98,10 @@ section {
   justify-content: center;
 }
 
-.address {}
+.address a {
+  text-decoration: none;
+  color: black;
+}
 
 .green {
   color: var(--main-green)
