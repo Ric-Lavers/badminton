@@ -26,18 +26,29 @@ function populateBracket(teams = input) {
     }
     arr[j].push(teams[i])
   }
-
-  arr.forEach(array => {
+  if(arr.length > 1){
+    arr.forEach((i) => {
+      const first_bracket = document.querySelector('.bracket').cloneNode(true)
+      const bracketSection = document.querySelector('.bracket-section')
+      bracketSection.append(first_bracket)
+    })
+  }
+  arr.forEach((array, j) => {
     array.length = 8
-    html = ""
-    for (i = 0; i < 8; i++) {
-      html = html + `<div class="team"><span>${array[i]}</span></div>`
-    }
-    html = bracket(html)
+    // html = ""
+    // for (i = 0; i < 8; i++) {
+    //   html = html + `<div class="team"><span>${array[i]}</span></div>`
+    // }
+    // html = bracket(html)
+    // document.querySelector('.bracket').style.display = 'grid'
+    // document.querySelectorAll('.col-1 span').forEach((el, i) => {
+    //   el.innerText = array[i] || ''
+    // })
 
-    document.querySelector('.bracket').style.display = 'grid'
-    document.querySelectorAll('.col-1 span').forEach((el, i) => {
-      el.innerText = array[i] || ''
+    const this_bracket = Array.from(document.querySelectorAll('.bracket'))[j]
+
+    this_bracket.querySelectorAll('.col-1 span').forEach((el, idx) => {
+      el.innerText = array[idx] || ''
     })
 
   })
