@@ -73,9 +73,7 @@ function bracket(teamsHtml) {
 `
 }
 getAllTeams()
-  .then((teams) =>
-    teams.filter(({ teamName }) => teamName).map(({ teamName }) => teamName),
-  )
+  .then((teams) => teams.filter((t) => t.teamName).map((t) => t.teamName))
   .then((teams) => {
     if (teams.length > 3) populateBracket(teams)
   })
