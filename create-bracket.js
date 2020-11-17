@@ -26,15 +26,32 @@ function populateBracket(teams = input) {
     }
     arr[j].push(teams[i])
   }
-
-  arr[0].length = 8
-  html = ""
-  for (i = 0; i < 8; i++) {
-    html = html + `<div class="team"><span>${arr[0][i] || ""}</span></div>`
+  if (arr.length > 1) {
+    arr.forEach((i) => {
+      const first_bracket = document.querySelector(".bracket").cloneNode(true)
+      const bracketSection = document.querySelector(".bracket-section")
+      bracketSection.append(first_bracket)
+    })
   }
-  html = bracket(html)
+  arr.forEach((array, j) => {
+    array.length = 8
+    // html = ""
+    // for (i = 0; i < 8; i++) {
+    //   html = html + `<div class="team"><span>${array[i]}</span></div>`
+    // }
+    // html = bracket(html)
+    // document.querySelector('.bracket').style.display = 'grid'
+    // document.querySelectorAll('.col-1 span').forEach((el, i) => {
+    //   el.innerText = array[i] || ''
+    // })
 
-  document.querySelector("section.bracket-section").innerHTML = html
+    const this_bracket = Array.from(document.querySelectorAll(".bracket"))[j]
+
+    this_bracket.querySelectorAll(".col-1 span").forEach((el, idx) => {
+      el.innerText = array[idx] || ""
+    })
+  })
+
   items = Array.from(document.querySelectorAll(".team"))
   maxHeight = items.reduce((a, c) => {
     h = c.getBoundingClientRect().height
@@ -73,7 +90,9 @@ function bracket(teamsHtml) {
 `
 }
 getAllTeams()
-  .then((teams) => teams.filter((t) => t.teamName).map((t) => t.teamName))
+  .then((teams) =>
+    teams.filter(({ teamName }) => teamName).map(({ teamName }) => teamName),
+  )
   .then((teams) => {
     if (teams.length > 3) populateBracket(teams)
   })
