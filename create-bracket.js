@@ -48,7 +48,13 @@ function populateBracket(teams = input) {
     const this_bracket = Array.from(document.querySelectorAll(".bracket"))[j]
 
     this_bracket.querySelectorAll(".col-1 span").forEach((el, idx) => {
-      el.innerText = array[idx] || ""
+      text = array[idx] || ""
+      el.innerText = text
+      if (text.length > 18) {
+        el.style.fontSize = "medium"
+      } else if (text.length > 26) {
+        el.style.fontSize = "small"
+      }
     })
   })
 
