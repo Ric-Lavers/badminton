@@ -1,6 +1,6 @@
 var base =
-  // "https://skribbl-lists-serverless.now.sh" ||
-  // "https://skribbl-lists-serverless.ric-lavers.vercel.app" ||
+  "https://skribbl-lists-serverless.now.sh" ||
+  "https://skribbl-lists-serverless.ric-lavers.vercel.app" ||
   "http://localhost:3000"
 
 const getAllTeams = async () => {

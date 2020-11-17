@@ -6,7 +6,8 @@ body {
 }
 
 :root {
-  --main-green: #33741F
+  --main-green: #33741F;
+  --bracket-team-height: 30px;
     /* #33741F; */
 }
 
@@ -50,9 +51,8 @@ section {
   border-top: 3px solid;
 }
 
-.court>div:last-child,
-.court>div:first-child {
 
+.court>div:first-child {
   height: 30vh;
   max-height: 500px;
 }
@@ -66,9 +66,11 @@ section {
 }
 
 .description {
+  font-size: 0.9em;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-height: 30vh;max-height: 500px;
 }
 
 .image-symbols {
@@ -96,7 +98,10 @@ section {
   justify-content: center;
 }
 
-.address {}
+.address a {
+  text-decoration: none;
+  color: black;
+}
 
 .green {
   color: var(--main-green)
@@ -156,21 +161,30 @@ small {
 }
 
 .bracket-section {
-
-  justify-content: left;
+  display: block;
 }
 
 .bracket {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 2px;
+  width: 100%;
+  max-width: 800px;
   
 }
 
+.col {
+  width: 100%;
+  background-color:  var(--main-green);
+  /* display: flex;
+  flex-direction: column; */
+  /* height: 85%; */
+}
+
 .team {
-  width: 120px;
-  min-height: 30px;
-  margin: 30px 0;
+  width: 100%;
+  min-height: var(--bracket-team-height);
+  margin: var(--bracket-team-height) 0;
   font-size: 100%;
   
   outline: black solid 2px;
@@ -178,34 +192,24 @@ small {
   background-color:white;
   opacity: 0.7;
   
+  position: relative;
 }
-
-.col {
-  background-color:  var(--main-green);
-  /* display: flex;
-  flex-direction: column; */
-  height: 85%;
-}
-
-.col-2 {
-}
-
-.col-2 .team {
-  margin: 90px 0;
-
+.team span {
+  /* position: absolute; */
+  line-height:1;
 }
 
 
 
-.col-3 .team {
-  margin: 210px 0;
 
-}
-.col-2 .team:first-of-type {margin: 60px 0}
-.col-3 .team:first-of-type {margin: 120px 0}
-.col-4 .team {
-              margin: 240px 0;
-}
+.col-1 .team { margin: var(--bracket-team-height) 0 }
+.col-2 .team { margin: calc(var(--bracket-team-height)*3) 0 }
+.col-3 .team { margin: calc(var(--bracket-team-height)*7) 0 }
+
+.col-2 .team:first-of-type {margin: var(--bracket-team-height) 0}
+.col-2 .team:first-of-type {margin: calc(var(--bracket-team-height)*2) 0}
+.col-3 .team:first-of-type {margin: calc(var(--bracket-team-height)*4) 0}
+.col-4 .team:first-of-type {margin: calc(var(--bracket-team-height)*8) 0}
 
 
 
@@ -225,3 +229,8 @@ small {
   display: flex;
   justify-content: space-between;
 }
+input {
+  padding: 4px;
+
+}
+
