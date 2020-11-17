@@ -153,6 +153,7 @@ small {
 }
 
 .bracket-section {
+  display: block;
 }
 
 .bracket {
